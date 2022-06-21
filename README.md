@@ -12,7 +12,7 @@
 
 ![react-dates in action](https://raw.githubusercontent.com/react-dates/react-dates/HEAD/react-dates-demo.gif)
 
-## Test
+## Test build
 
 ## Live Playground
 
