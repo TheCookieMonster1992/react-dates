@@ -73,6 +73,7 @@ const propTypes = forbidExtraProps({
   phrases: PropTypes.shape(getPhrasePropTypes(SingleDatePickerInputPhrases)),
 
   isRTL: PropTypes.bool,
+  predefinedHours: PropTypes.bool,
 });
 
 const defaultProps = {
@@ -120,6 +121,7 @@ const defaultProps = {
   phrases: SingleDatePickerInputPhrases,
 
   isRTL: false,
+  predefinedHours: false,
 };
 
 export default class SingleDatePickerInputController extends React.PureComponent {
@@ -140,8 +142,9 @@ export default class SingleDatePickerInputController extends React.PureComponent
       onDateChange,
       onFocusChange,
       onClose,
+      predefinedHours,
     } = this.props;
-    const newDate = toMomentObject(dateString, this.getDisplayFormat());
+    const newDate = toMomentObject(dateString, this.getDisplayFormat(), predefinedHours);
 
     const isValid = newDate && !isOutsideRange(newDate) && !isDayBlocked(newDate);
     if (isValid) {

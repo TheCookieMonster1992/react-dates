@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { withStyles, withStylesPropTypes } from 'react-with-styles';
+import { css, withStyles, withStylesPropTypes } from 'react-with-styles';
 import { Portal } from 'react-portal';
 import { forbidExtraProps } from 'airbnb-prop-types';
 import { addEventListener } from 'consolidated-events';
@@ -133,6 +133,7 @@ const defaultProps = {
   weekDayFormat: 'dd',
   phrases: DateRangePickerPhrases,
   dayAriaLabelFormat: undefined,
+  predefinedHours: false,
 };
 
 class DateRangePicker extends React.PureComponent {
@@ -619,6 +620,7 @@ class DateRangePicker extends React.PureComponent {
       regular,
       css,
       styles,
+      predefinedHours,
     } = this.props;
 
     const { isDateRangePickerInputFocused } = this.state;
@@ -674,6 +676,7 @@ class DateRangePicker extends React.PureComponent {
         regular={regular}
         verticalSpacing={verticalSpacing}
         autoComplete={autoComplete}
+        predefinedHours={predefinedHours}
       >
         {this.maybeRenderDayPickerWithPortal()}
       </DateRangePickerInputController>

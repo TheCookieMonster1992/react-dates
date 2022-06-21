@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { withStyles, withStylesPropTypes } from 'react-with-styles';
+import { css, withStyles, withStylesPropTypes } from 'react-with-styles';
 import { Portal } from 'react-portal';
 import { forbidExtraProps } from 'airbnb-prop-types';
 import { addEventListener } from 'consolidated-events';
@@ -125,6 +125,7 @@ const defaultProps = {
   weekDayFormat: 'dd',
   phrases: SingleDatePickerPhrases,
   dayAriaLabelFormat: undefined,
+  predefinedHours: false,
 };
 
 class SingleDatePicker extends React.PureComponent {
@@ -583,6 +584,7 @@ class SingleDatePicker extends React.PureComponent {
       styles,
       isOutsideRange,
       isDayBlocked,
+      predefinedHours,
     } = this.props;
 
     const { isInputFocused } = this.state;
@@ -628,6 +630,7 @@ class SingleDatePicker extends React.PureComponent {
         verticalSpacing={verticalSpacing}
         reopenPickerOnClearDate={reopenPickerOnClearDate}
         keepOpenOnDateSelect={keepOpenOnDateSelect}
+        predefinedHours={predefinedHours}
       >
         {this.maybeRenderDayPickerWithPortal()}
       </SingleDatePickerInputController>

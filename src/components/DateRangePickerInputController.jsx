@@ -85,6 +85,7 @@ const propTypes = forbidExtraProps({
   phrases: PropTypes.shape(getPhrasePropTypes(DateRangePickerInputPhrases)),
 
   isRTL: PropTypes.bool,
+  predefinedHours: PropTypes.bool,
 });
 
 const defaultProps = {
@@ -145,6 +146,7 @@ const defaultProps = {
   phrases: DateRangePickerInputPhrases,
 
   isRTL: false,
+  predefinedHours: false,
 };
 
 export default class DateRangePickerInputController extends React.PureComponent {
@@ -181,9 +183,10 @@ export default class DateRangePickerInputController extends React.PureComponent 
       onDatesChange,
       onClose,
       onFocusChange,
+      predefinedHours,
     } = this.props;
 
-    const endDate = toMomentObject(endDateString, this.getDisplayFormat());
+    const endDate = toMomentObject(endDateString, this.getDisplayFormat(), predefinedHours);
 
     const isEndDateValid = endDate
       && !isOutsideRange(endDate) && !isDayBlocked(endDate)
@@ -229,9 +232,10 @@ export default class DateRangePickerInputController extends React.PureComponent 
       onDatesChange,
       onFocusChange,
       disabled,
+      predefinedHours,
     } = this.props;
 
-    const startDate = toMomentObject(startDateString, this.getDisplayFormat());
+    const startDate = toMomentObject(startDateString, this.getDisplayFormat(), predefinedHours);
     const isEndDateBeforeStartDate = startDate
       && isBeforeDay(endDate, startDate.clone().add(minimumNights, 'days'));
     const isStartDateValid = startDate
