@@ -52,7 +52,7 @@ describe('toMomentObject', () => {
       expect(date.year()).to.equal(1993);
       expect(date.hours()).to.equal(12);
       expect(date.minutes()).to.equal(15);
-    })
+    });
 
     it('using input hours', () => {
       const date = toMomentObject('Dec 02 1993 06:15', 'MMM DD YYYY HH:mm', false);
@@ -62,8 +62,8 @@ describe('toMomentObject', () => {
       expect(date.year()).to.equal(1993);
       expect(date.hours()).to.equal(6);
       expect(date.minutes()).to.equal(15);
-    })
-  })
+    });
+  });
 
   describe('Daylight Savings Time issues', () => {
     it('last of February does not equal first of March', () => {
